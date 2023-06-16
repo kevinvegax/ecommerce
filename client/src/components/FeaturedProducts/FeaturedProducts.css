@@ -1,0 +1,15 @@
+.featuredProducts{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.top{
+  text-align: center;
+  padding: 100px;
+}
+.bottom{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 80%;
+}

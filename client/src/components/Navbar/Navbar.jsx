@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from "react-router-dom";
-import "./Navbar.scss"
+import "./Navbar.css"
 import Cart from "../Cart/Cart";
 import { useSelector } from "react-redux";
 
@@ -10,36 +11,26 @@ const Navbar = () => {
   const products = useSelector((state) => state.cart.products);
 
   return (
-    <div className="navbar">
-      <div className="wrapper">
-        <div className="left">
-          <div className="item">
-            <Link className ="link" to="/products/1">Women</Link>
+    <div className="headerContainer">
+      <header>
+        <Link to='/'><img src='/img/1.png' alt="" /></Link>
+        <ul className="navbar">
+          <li><Link to='/products/1'>Hombres</Link></li>
+          <li><Link to='/products/2'>Mujeres</Link></li>
+          <li><Link to='/products/3'>Niños</Link></li>
+          <li><Link to='/products/4'>Bebes</Link></li>
+        </ul>
+        <div className="main">
+          <div className="cartIcon" onClick={()=>setOpen(!open)}>
+            <ShoppingCartOutlinedIcon className="icon"/>
+            <span>{products.length}</span>
           </div>
-          <div className="item">
-            <Link className ="link" to="/products/2">Men</Link>
-          </div>
-          <div className="item">
-            <Link className ="link" to="/products/3">Children</Link>
-          </div>
-        </div>
-        <div className="center">
-          <Link className ="link" to="/">LAMASTORE</Link>
-        </div>
-        <div className="right">
-          {/* <div className="item">
-            <Link className ="link" to="/">About</Link>
-          </div> */}
-
-          <div className="icons">
-            <div className="cartIcon" onClick={()=>setOpen(!open)}>
-              <ShoppingCartOutlinedIcon/>
-              <span>{products.length}</span>
-            </div>
+          <div className="menuIcon">
+            <MenuIcon className="icon"/>
           </div>
         </div>
-      </div>
-      {open && <Cart/>}
+        {open && <Cart/>}
+      </header>
     </div>
   );
 };
