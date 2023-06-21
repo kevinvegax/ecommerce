@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size: 1.25rem;
 }
 .top{
   text-align: center;
@@ -11,5 +12,13 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  width: 80%;
+  width: 75%;
+}
+.lineSplit{
+  background-color: green;
+}
+@media only screen and (max-width: 1216px) {
+  .bottom{
+    width: 100%;
+  }
 }

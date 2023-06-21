@@ -1,38 +1,48 @@
-import React, { useState } from "react";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import { useRef } from "react";
+// import { FaBars, FaTimes } from "react-icons/fa";
 import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
+import './Navbar.css'
 import { Link } from "react-router-dom";
-import "./Navbar.css"
-import Cart from "../Cart/Cart";
-import { useSelector } from "react-redux";
+import useFetch from "../../hooks/useFetch";
 
-const Navbar = () => {
-  const [open,setOpen] = useState(false)
-  const products = useSelector((state) => state.cart.products);
+function Navbar() {
 
-  return (
-    <div className="headerContainer">
-      <header>
-        <Link to='/'><img src='/img/1.png' alt="" /></Link>
-        <ul className="navbar">
-          <li><Link to='/products/1'>Hombres</Link></li>
-          <li><Link to='/products/2'>Mujeres</Link></li>
-          <li><Link to='/products/3'>Niños</Link></li>
-          <li><Link to='/products/4'>Bebes</Link></li>
-        </ul>
-        <div className="main">
-          <div className="cartIcon" onClick={()=>setOpen(!open)}>
-            <ShoppingCartOutlinedIcon className="icon"/>
-            <span>{products.length}</span>
-          </div>
-          <div className="menuIcon">
-            <MenuIcon className="icon"/>
-          </div>
-        </div>
-        {open && <Cart/>}
-      </header>
-    </div>
-  );
-};
+	const { data } = useFetch(
+		`/categories`
+	  );
+	
+	const navRef = useRef();
+
+	const showNavbar = () => {
+		navRef.current.classList.toggle(
+			"responsive_nav"
+		);
+	};
+
+	return (
+		<header>
+			<Link to='/'><img src="/img/logo2.png" alt=""/></Link>
+			<nav ref={navRef}>
+				{data?.map((item) => (
+					<div key={item.id}>
+						<Link to={'products/' + item.id} onClick={showNavbar}>{item.attributes.title}</Link>
+					</div>
+				))}
+				{/* <Link to='products/2'>Hombres</Link> */}
+				<button
+					className="nav-btn nav-close-btn"
+					onClick={showNavbar}>
+					<CloseIcon />
+				</button>
+			</nav>
+			<button
+				className="nav-btn"
+				onClick={showNavbar}>
+				<MenuIcon />
+			</button>
+		</header>
+	);
+}
 
 export default Navbar;

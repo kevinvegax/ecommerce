@@ -3,15 +3,15 @@ import Card from "../Card/Card";
 import "./FeaturedProducts.css";
 import useFetch from "../../hooks/useFetch";
 
-const FeaturedProducts = ({ type }) => {
+const FeaturedProducts = () => {
   const { data, loading, error } = useFetch(
-    `/products?populate=*&[filters][type][$eq]=${type}`
+    `/products?populate=*&[filters][type][$eq]=Destacados`
   );
 
   return (
     <div className="featuredProducts" >
       <div className="top">
-        <h1>Productos {type}</h1>
+        <h1>Productos Destacados</h1>
       </div>
       <div className="bottom">
         {error
