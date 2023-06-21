@@ -1,0 +1,9 @@
+.imgSlider{
+    height: 1000px;
+}
+
+@media only screen and (max-width: 1024px) {
+    .imgSlider{
+        height: 100%;
+    }
+  }

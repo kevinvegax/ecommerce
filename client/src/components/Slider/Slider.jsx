@@ -13,13 +13,13 @@ const Slider = () => {
   return (
     <Carousel showThumbs={false} autoPlay={true} infiniteLoop={true}>
       <div className="abcd">
-        <img src={data[0]} alt=""/>
+        <img src={data[0]} alt="" className="imgSlider"/>
       </div>
       <div>
-        <img src={data[1]} alt="" />
+        <img src={data[1]} alt="" className="imgSlider"/>
       </div>
       <div>
-        <img src={data[2]} alt="" />
+        <img src={data[2]} alt="" className="imgSlider"/>
       </div>
     </Carousel>
   );
