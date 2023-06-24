@@ -1,12 +1,10 @@
 .catContainer{
-  background-color: red;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
 }
 .itemCat{
-  background-color: blue;
   width: 100%;
   display: flex;
   justify-content: center;

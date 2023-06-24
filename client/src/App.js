@@ -1,4 +1,3 @@
-import { Children } from "react";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
@@ -21,7 +20,8 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
-    children: [
+    children: 
+    [
       {
         path: "/",
         element: <Home />,
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
         element: <Product />,
       },
     ],
-  },
+  }
 ]);
 
 function App() {

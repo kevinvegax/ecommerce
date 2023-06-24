@@ -1,7 +1,7 @@
 import React from "react";
-import "./List.scss";
 import Card from "../Card/Card";
 import useFetch from "../../hooks/useFetch";
+import './List.css'
 
 const List = ({ subCats, sort, catId }) => {
   

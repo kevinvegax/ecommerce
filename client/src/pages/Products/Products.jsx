@@ -35,7 +35,7 @@ const Products = () => {
           name="product"
           id="all"
           onChange={()=>{setSelectedSubCats([])}}/>
-          <label htmlFor="all">{'Ver todo'}</label>
+          <label htmlFor="all" className="labelItemAll">{'Ver todo'}</label>
           {data?.map((item) => (
             <div className="inputItem" key={item.id}>
               <input
