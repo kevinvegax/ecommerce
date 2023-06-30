@@ -4,13 +4,14 @@ import { useParams } from "react-router-dom";
 import List from "../../components/List/List";
 import useFetch from "../../hooks/useFetch";
 import "./Products.scss";
+import BannerProducts from "../../components/BannerProducts/BannerProducts";
 
 const Products = () => {
   const catId = parseInt(useParams().id);
   const [sort, setSort] = useState(null);
   const [selectedSubCats, setSelectedSubCats] = useState([]);
 
-  const { data, loading, error } = useFetch(
+  const { data } = useFetch(
     `/sub-categories?[filters][categories][id][$eq]=${catId}`
   );
 
@@ -84,11 +85,7 @@ const Products = () => {
         </div>
       </div>
       <div className="right">
-        <img
-          className="catImg"
-          src="https://images.pexels.com/photos/1074535/pexels-photo-1074535.jpeg?auto=compress&cs=tinysrgb&w=1600"
-          alt=""
-        />
+        <BannerProducts />
         <List catId={catId} sort={sort} subCats={selectedSubCats}/>
       </div>
     </div>

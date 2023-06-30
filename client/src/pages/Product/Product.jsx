@@ -13,7 +13,7 @@ const Product = () => {
   const [quantity, setQuantity] = useState(1);
 
   const dispatch = useDispatch();
-  const { data, loading, error } = useFetch(`/products/${id}?populate=*`);
+  const { data, loading } = useFetch(`/products/${id}?populate=*`);
 
   return (
     <div className="product">
@@ -51,27 +51,28 @@ const Product = () => {
             </div>
           </div>
           <div className="right">
-            <h1>{data?.attributes?.title}</h1>
-            <span className="price">${data?.attributes?.price}</span>
-            <p>{data?.attributes?.desc}</p>
-            <button
-              className="add"
-              onClick={() =>
-                dispatch(
-                  addToCart({
-                    id: data.id,
-                    title: data.attributes.title,
-                    desc: data.attributes.desc,
-                    price: data.attributes.price,
-                    img: data.attributes.img.data.attributes.url,
-                    quantity,
-                  })
-                )
-              }
-            >
-              <WhatsAppIcon /> Preguntar por disponibilidad
-            </button>
-
+            <div className="rightContainer">
+              <h1>{data?.attributes?.title}</h1>
+              <span className="price">${data?.attributes?.price}</span>
+              <p>{data?.attributes?.desc}</p>
+              <button
+                className="add"
+                onClick={() =>
+                  dispatch(
+                    addToCart({
+                      id: data.id,
+                      title: data.attributes.title,
+                      desc: data.attributes.desc,
+                      price: data.attributes.price,
+                      img: data.attributes.img.data.attributes.url,
+                      quantity,
+                    })
+                  )
+                }
+              >
+                <WhatsAppIcon /> COMPRAR ARTICULO
+              </button>
+            </div>
           </div>
         </>
       )}
